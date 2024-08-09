@@ -6,7 +6,7 @@
 /*   By: thivu <thivu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 12:54:35 by thivu             #+#    #+#             */
-/*   Updated: 2024/08/09 14:53:00 by thivu            ###   ########.fr       */
+/*   Updated: 2024/08/09 18:43:34 by thivu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 char	*ft_cut_line(char *save)
 {
 	char	*str;
-	int	i;
+	int		i;
 
 	i = 0;
-	if (!save)
+	if (!save[i])
 		return (NULL);
 	while (save[i] && save[i] != '\n')
 		i++;
@@ -42,8 +42,8 @@ char	*ft_cut_line(char *save)
 
 char	*ft_cut_save(char *save)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*str;
 
 	i = 0;
@@ -69,7 +69,7 @@ char	*ft_cut_save(char *save)
 char	*ft_read(int fd, char *save)
 {
 	char	*buffer;
-	int	n;
+	int		n;
 
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
