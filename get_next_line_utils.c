@@ -6,7 +6,7 @@
 /*   By: thivu <thivu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 12:52:19 by thivu             #+#    #+#             */
-/*   Updated: 2024/08/09 14:51:01 by thivu            ###   ########.fr       */
+/*   Updated: 2024/09/10 14:22:09 by thivu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,15 @@ size_t	ft_strlen(char *str)
 	size_t	len;
 
 	len = 0;
-	while (*str)
-	{
+	while (str[len])
 		len++;
-		str++;
-	}
 	return (len);
 }
 
 char	*ft_strchr(char *s, int c)
 {
+	if (!s)
+		return (NULL);	
 	while (*s && *s != (char)c)
 		s++;
 	if (*s == (char)c || !c)
@@ -36,28 +35,28 @@ char	*ft_strchr(char *s, int c)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	char	*strjoin;
-	size_t	len1;
-	size_t	len2;
-	size_t	i;
+	char		*strjoin;
+	int			i;
+	int			n;
 
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	i = 0;
-	strjoin = malloc(sizeof(char) * (len1 + len2 + 1));
-	if (!strjoin)
+	if (!s1)
+	{
+		s1 = (char *)malloc(1 * sizeof(char));
+		s1[0] = '\0';
+	}
+	if (!s1 || !s2)
 		return (NULL);
-	while (i < len1)
-	{
-		strjoin[i] = s1[i];
-		i++;
-	}
-	while (i < len1 + len2)
-	{
-		strjoin[i] = s2[i - len1];
-		i++;
-	}
-	strjoin[len1 + len2] = '\0';
+	strjoin = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (strjoin == NULL)
+		return (NULL);
+	i = -1;
+	n = 0;
+	if (s1)
+		while (s1[++i] != '\0')
+			strjoin[i] = s1[i];
+	while (s2[n] != '\0')
+		strjoin[i++] = s2[n++];
+	strjoin[ft_strlen(s1) + ft_strlen(s2)] = '\0';
 	free(s1);
 	return (strjoin);
 }
