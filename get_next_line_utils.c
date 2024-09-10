@@ -6,7 +6,7 @@
 /*   By: thivu <thivu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 12:52:19 by thivu             #+#    #+#             */
-/*   Updated: 2024/09/10 14:22:09 by thivu            ###   ########.fr       */
+/*   Updated: 2024/09/10 14:26:47 by thivu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t	ft_strlen(char *str)
 char	*ft_strchr(char *s, int c)
 {
 	if (!s)
-		return (NULL);	
+		return (NULL);
 	while (*s && *s != (char)c)
 		s++;
 	if (*s == (char)c || !c)
